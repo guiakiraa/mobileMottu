@@ -3,9 +3,12 @@ import { View, Text, TextInput, TouchableOpacity, ImageBackground } from 'react-
 import styles from '../styles/styles';
 import fundo2 from '../../assets/fundo2.png';
 import { StatusBar } from 'expo-status-bar';
+import { NavigationProps } from '../types/types';
 
-const PatioCodeScreen = ({ navigation }: any) => {
+function PatioCodeScreen(props: NavigationProps): React.ReactElement {
+  const { navigation } = props;
   const [patioCode, setPatioCode] = useState('');
+  
   return (
     <ImageBackground source={fundo2} style={styles.background}>
       <View style={styles.patioContainer}>
@@ -27,6 +30,6 @@ const PatioCodeScreen = ({ navigation }: any) => {
       <StatusBar style="auto" />
     </ImageBackground>
   );
-};
+}
 
 export default PatioCodeScreen; 

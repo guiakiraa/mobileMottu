@@ -230,6 +230,63 @@ const styles = StyleSheet.create({
     left: 20,
     zIndex: 1,
   },
+  detalheMotoCard: {
+    backgroundColor: '#D9D9D9',
+    borderRadius: 8,
+    padding: 20,
+    alignItems: 'center',
+    width: '90%',
+    maxWidth: 400,
+    marginTop: 20,
+  },
+  detalheMotoSetorText: {
+    color: 'black',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  detalheMotoSetorValue: {
+    color: 'black',
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  detalheMotoInfoContainer: {
+    alignItems: 'center',
+  },
+  detalheMotoPlaca: {
+    color: '#222',
+    fontSize: 36,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  detalheMotoModelo: {
+    color: '#444',
+    fontSize: 18,
+    marginBottom: 20,
+  },
+  detalheMotoImage: {
+    width: '100%',
+    height: 150,
+    marginBottom: 20,
+  },
+  detalheMotoButton: {
+    flexDirection: 'row',
+    backgroundColor: '#57E957',
+    borderRadius: 8,
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 10,
+    width: '100%',
+  },
+  detalheMotoButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 10,
+  },
 });
 
 export default styles; 

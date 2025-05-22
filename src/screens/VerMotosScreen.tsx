@@ -2,15 +2,11 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import styles from '../styles/styles';
 import { Picker } from '@react-native-picker/picker';
-import Icon from 'react-native-vector-icons/Feather';
-import { TriagemType } from '../types/TriagemType';
+import { Feather } from '@expo/vector-icons';
+import { VerMotosProps } from '../types/types';
 
-interface Props {
-  navigation: any;
-  triagens: TriagemType[];
-}
-
-const VerMotosScreen: React.FC<Props> = ({ navigation, triagens }) => {
+function VerMotosScreen(props: VerMotosProps): React.ReactElement {
+  const { navigation, triagens } = props;
   const [setor, setSetor] = useState<string>('patio_a');
 
   const buscarTriagens = () => {
@@ -20,7 +16,7 @@ const VerMotosScreen: React.FC<Props> = ({ navigation, triagens }) => {
   return (
     <View style={styles.menuComponentContainer}>
       <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-        <Icon name="arrow-left" size={24} color="#fff" />
+        <Feather name="arrow-left" size={24} color="#fff" />
       </TouchableOpacity>
       <Text style={styles.menuComponentText}>Ver Motos do Pátio</Text>
       <Text style={[styles.menuComponentText, { fontSize: 16, marginBottom: 10 }]}>Selecione o setor</Text>
@@ -41,6 +37,6 @@ const VerMotosScreen: React.FC<Props> = ({ navigation, triagens }) => {
       </TouchableOpacity>
     </View>
   );
-};
+}
 
 export default VerMotosScreen; 

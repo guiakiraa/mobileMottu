@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import axios, { AxiosInstance } from 'axios';
 import styles from '../styles/styles';
 import backgroundImage from '../../assets/fundo1.png';
+import { NavigationProps } from '../types/types';
 
 const APIKEY = process.env.EXPO_PUBLIC_APIKEY;
 
@@ -11,7 +12,8 @@ const apiLogin: AxiosInstance = axios.create({
   baseURL: 'https://identitytoolkit.googleapis.com/v1/accounts',
 });
 
-const LoginScreen = ({ navigation }: any) => {
+function LoginScreen(props: NavigationProps): React.ReactElement {
+  const { navigation } = props;
   const [email, setEmail] = useState('gerente@mottu.teste');
   const [password, setPassword] = useState('qwerty123');
   const KEY_SUFIX = `key=${APIKEY}`;
@@ -60,6 +62,6 @@ const LoginScreen = ({ navigation }: any) => {
       </View>
     </ImageBackground>
   );
-};
+}
 
 export default LoginScreen; 

@@ -4,29 +4,23 @@ import styles from '../styles/styles';
 import fundo3 from '../../assets/fundo3.png';
 import { Picker } from '@react-native-picker/picker';
 import { StatusBar } from 'expo-status-bar';
-import { TriagemType } from '../types/TriagemType';
+import { Triagem, FazerTriagemProps } from '../types/types';
 
-interface Props {
-  navigation: any;
-  triagens: TriagemType[];
-  setTriagens: (t: TriagemType[]) => void;
-}
-
-const FazerTriagemScreen: React.FC<Props> = ({ navigation, triagens, setTriagens }) => {
+function FazerTriagemScreen(props: FazerTriagemProps): React.ReactElement {
   const [placa, setPlaca] = useState('');
   const [diagnostico, setDiagnostico] = useState('');
-  const [setor, setSetor] = useState('patio_a');
+  const [setor, setSetor] = useState<'patio_a' | 'patio_b' | 'manutencao'>('patio_a');
   const [success, setSuccess] = useState(false);
 
   const cadastrarTriagem = () => {
     if (!placa || !diagnostico || !setor) return;
-    const novaTriagem: TriagemType = {
+    const novaTriagem: Triagem = {
       id: Date.now(),
       placa,
       diagnostico,
       setor,
     };
-    setTriagens([...triagens, novaTriagem]);
+    props.setTriagens([...props.triagens, novaTriagem]);
     setPlaca('');
     setDiagnostico('');
     setSetor('patio_a');
@@ -36,7 +30,7 @@ const FazerTriagemScreen: React.FC<Props> = ({ navigation, triagens, setTriagens
 
   return (
     <ImageBackground source={fundo3} style={styles.background}>
-      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+      <TouchableOpacity style={styles.backButton} onPress={() => props.navigation.goBack()}>
         <Text style={{ color: '#fff', fontSize: 24 }}>{'←'}</Text>
       </TouchableOpacity>
       <Text style={styles.menuComponentText}>Digite a placa da moto</Text>
@@ -59,7 +53,7 @@ const FazerTriagemScreen: React.FC<Props> = ({ navigation, triagens, setTriagens
       <View style={styles.pickerContainer}>
         <Picker
           selectedValue={setor}
-          onValueChange={(itemValue: string) => setSetor(itemValue)}
+          onValueChange={(itemValue: 'patio_a' | 'patio_b' | 'manutencao') => setSetor(itemValue)}
           style={styles.picker}
           dropdownIconColor="#57E957"
         >
@@ -77,6 +71,6 @@ const FazerTriagemScreen: React.FC<Props> = ({ navigation, triagens, setTriagens
       <StatusBar style="auto" />
     </ImageBackground>
   );
-};
+}
 
 export default FazerTriagemScreen; 

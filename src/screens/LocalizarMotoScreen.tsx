@@ -2,21 +2,17 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import styles from '../styles/styles';
 import fundo3 from '../../assets/fundo3.png';
-import Icon from 'react-native-vector-icons/Feather';
-import { TriagemType } from '../types/TriagemType';
+import { Feather } from '@expo/vector-icons';
+import { LocalizarMotoProps, Triagem } from '../types/types';
 
-interface Props {
-  navigation: any;
-  triagens: TriagemType[];
-}
-
-const LocalizarMotoScreen: React.FC<Props> = ({ navigation, triagens }) => {
+function LocalizarMotoScreen(props: LocalizarMotoProps): React.ReactElement {
+  const { navigation, triagens } = props;
   const [placa, setPlaca] = useState('');
 
   return (
     <ImageBackground source={fundo3} style={styles.background}>
       <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-        <Icon name="arrow-left" size={24} color="#fff" />
+        <Feather name="arrow-left" size={24} color="#fff" />
       </TouchableOpacity>
       <Text style={styles.menuComponentText}>Localizar Moto</Text>
       <Text style={[styles.menuComponentText, { fontSize: 16, marginBottom: 10 }]}>Informe a placa</Text>
@@ -30,7 +26,7 @@ const LocalizarMotoScreen: React.FC<Props> = ({ navigation, triagens }) => {
       <TouchableOpacity
         style={styles.menuBackButton}
         onPress={() => {
-          const found = triagens.find((t: TriagemType) => t.placa.toLowerCase() === placa.trim().toLowerCase());
+          const found = triagens.find((t: Triagem) => t.placa.toLowerCase() === placa.trim().toLowerCase());
           navigation.navigate('DetalheMoto', { triagem: found || null });
         }}
       >
@@ -38,6 +34,6 @@ const LocalizarMotoScreen: React.FC<Props> = ({ navigation, triagens }) => {
       </TouchableOpacity>
     </ImageBackground>
   );
-};
+}
 
 export default LocalizarMotoScreen; 

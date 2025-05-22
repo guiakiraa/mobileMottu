@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import styles from '../styles/styles';
-import fundo2 from '../../assets/fundo2.png';
 import { StatusBar } from 'expo-status-bar';
 
 const MenuScreen = ({ navigation }: any) => {
