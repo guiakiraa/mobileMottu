@@ -4,7 +4,7 @@ import styles from '../styles/styles';
 import fundo5 from '../../assets/fundo5.png';
 import motoImage from '../../assets/motomottu.png';
 import { Feather, FontAwesome } from '@expo/vector-icons';
-import { DetalheMotoProps, Triagem } from '../types/types';
+import { DetalheMotoProps } from '../types/types';
 
 function DetalheMotoScreen(props: DetalheMotoProps): React.ReactElement {
   const { route, navigation } = props;
